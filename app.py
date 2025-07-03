@@ -14,7 +14,7 @@ uploaded_file = st.file_uploader("Choose an X-ray image...", type=["jpg", "jpeg"
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption='Uploaded X-ray.', use_column_width=True)
+    st.image(image, caption='Your X-ray ', use_column_width=True)
 
     
     image = image.resize((224, 224))
@@ -29,4 +29,4 @@ if uploaded_file is not None:
     confidence = (1 - prediction) if prediction < 0.5 else prediction
 
     st.subheader(label)
-    st.write(f"Confidence: **{confidence * 100:.2f}%**")
+    st.write(f"Acuuracy: **{confidence * 100:.2f}%**")
