@@ -7,7 +7,7 @@ from PIL import Image
 
 model = load_model("xray_pneumonia_model.h5")
 
-st.title("🩻 Chest X-ray Pneumonia Detector")
+st.title("Chest X-ray Pneumonia Detector")
 st.write("Upload a chest X-ray image and let the AI detect pneumonia.")
 
 uploaded_file = st.file_uploader("Choose an X-ray image...", type=["jpg", "jpeg", "png"])
@@ -25,7 +25,7 @@ if uploaded_file is not None:
    
     prediction = model.predict(img_array)[0][0]
 
-    label = "🟢 Normal" if prediction < 0.5 else "🔴 Pneumonia Detected"
+    label = "- Normal" if prediction < 0.5 else "+ Pneumonia Detected"
     confidence = (1 - prediction) if prediction < 0.5 else prediction
 
     st.subheader(label)
